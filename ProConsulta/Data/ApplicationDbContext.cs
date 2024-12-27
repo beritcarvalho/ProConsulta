@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ProConsulta.Data.Configuracoes;
-using ProConsulta.Data.Configuracoes.Seeds;
+using ProConsulta.Data.Seeds;
 using ProConsulta.Models;
 using System.Reflection;
 
@@ -11,7 +11,7 @@ namespace ProConsulta.Data
     {
         public DbSet<Especialidade> Especialidades { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
-        public DbSet<Medico> Medico { get; set; }        
+        public DbSet<Medico> Medicos { get; set; }        
         public DbSet<Agendamento> Agendamentos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

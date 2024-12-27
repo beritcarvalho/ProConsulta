@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProConsulta.Models;
 
-namespace ProConsulta.Data.Configuracoes.Seeds
+namespace ProConsulta.Data.Seeds
 {
     public class DbInitializer
     {
@@ -49,13 +49,13 @@ namespace ProConsulta.Data.Configuracoes.Seeds
                     }
                 );
 
-            _builder.Entity<IdentityUserRole<string>>().HasData                              
+            _builder.Entity<IdentityUserRole<string>>().HasData
                 (
                     new IdentityUserRole<string>
                     {
                         RoleId = "ca61e48c-d53c-4102-a3a3-db5e25c593c0",
                         UserId = "699cc9c0-7e07-4967-89ef-bb2791033361"
-                    }                
+                    }
                 );
 
             _builder.Entity<Especialidade>().HasData

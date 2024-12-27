@@ -10,7 +10,7 @@ using ProConsulta.Data;
 using System.Security.Claims;
 using System.Text.Json;
 
-namespace Microsoft.AspNetCore.Routing
+namespace ProConsulta.Components.Account
 {
     internal static class IdentityComponentsEndpointRouteBuilderExtensions
     {
