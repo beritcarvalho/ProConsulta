@@ -1,0 +1,32 @@
+﻿@page "/medicos"
+@inherits IndexMedicoPage
+
+
+<MudText Typo="Typo.h3">Médicos</MudText>
+
+<MudButton Variant="Variant.Filled"
+           StartIcon="@Icons.Material.Filled.Add"
+           Color="Color.Info"
+           Size="Size.Large"
+           Href="/medicos/create"
+           class="mt-md-4- mb-4">
+    Novo Medico
+</MudButton>
+
+<MudDataGrid Items="@Medicos" Filterable="false" SortMode="@SortMode.Single" Groupable="false">
+    <Columns>
+        <PropertyColumn Property="model => model.Nome" />
+        <PropertyColumn Property="model => model.Documento" />
+        <PropertyColumn Property="model => model.Crm" Title="CRM"/>
+        <PropertyColumn Property="model => model.Telefone" />
+        <PropertyColumn Property="model => model.Especialidade.Nome" Title="Especialidade" />
+        <TemplateColumn>
+            <CellTemplate>
+                <MudStack Row>
+                    <MudFab Size="Size.Small" Label="Editar" @onclick="@(() => GoToUpdate(context.Item.Id))" StartIcon="@Icons.Material.Filled.Edit" Color="Color.Success" />
+                    <MudFab Size="Size.Small" Label="Excluir" @onclick="@(() => DeleteMedico(context.Item))" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error" />
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>

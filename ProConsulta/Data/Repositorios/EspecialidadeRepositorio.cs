@@ -15,8 +15,16 @@ namespace ProConsulta.Data.Repositorios
 
         public async Task AddAsync(Especialidade especialidade)
         {
-            _context.Especialidades.Add(especialidade);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Especialidades.Add(especialidade);
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                _context.ChangeTracker.Clear();
+                throw;
+            }
         }
 
         public async Task DeleteByIdAsync(int id)
@@ -38,8 +46,16 @@ namespace ProConsulta.Data.Repositorios
 
         public async Task UpdateAsync(Especialidade especialidade)
         {
-            _context.Update(especialidade);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Update(especialidade);
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                _context.ChangeTracker.Clear();
+                throw;
+            }
         }
     }
 }

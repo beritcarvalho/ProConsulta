@@ -15,8 +15,16 @@ namespace ProConsulta.Data.Repositorios
 
         public async Task AddAsync(Agendamento agendamento)
         {
-            _context.Agendamentos.Add(agendamento);
-            await _context.SaveChangesAsync();
+            try 
+            {
+                _context.Agendamentos.Add(agendamento);
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                _context.ChangeTracker.Clear();
+                throw;
+            }
         }
 
         public async Task DeleteByIdAsync(int id)
@@ -45,8 +53,16 @@ namespace ProConsulta.Data.Repositorios
 
         public async Task UpdateAsync(Agendamento agendamento)
         {
-            _context.Update(agendamento);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Update(agendamento);
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                _context.ChangeTracker.Clear();
+                throw;
+            }
         }
     }
 }

@@ -15,8 +15,16 @@ namespace ProConsulta.Data.Repositorios
 
         public async Task AddAsync(Paciente paciente)
         {
-            _context.Pacientes.Add(paciente);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Pacientes.Add(paciente);
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                _context.ChangeTracker.Clear();
+                throw;
+            }
         }
 
         public async Task DeleteByIdAsync(int id)
@@ -38,8 +46,16 @@ namespace ProConsulta.Data.Repositorios
 
         public async Task UpdateAsync(Paciente paciente)
         {
-            _context.Update(paciente);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Update(paciente);
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                _context.ChangeTracker.Clear();
+                throw;
+            }
         }
     }
 }

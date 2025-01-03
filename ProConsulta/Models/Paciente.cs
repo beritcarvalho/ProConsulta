@@ -3,7 +3,12 @@
 namespace ProConsulta.Models
 {
     public class Paciente : ModelBase<int>
-    {        
+    {
+        public Paciente()
+        {
+            DataCriacao = DateTime.Now;
+        }
+
         public string Nome { get; set; } = null!;
         public string Documento { get; set; } = null!;
         public string Email { get; set; } = null!;
