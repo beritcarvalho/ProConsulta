@@ -1,0 +1,60 @@
+﻿@page "/agendamentos/create"
+@using ProConsulta.Models
+@inherits CreateAgendamentoPage
+
+<PageTitle>Agendamentos</PageTitle>
+
+<MudText Typo="Typo.h3">Cadastro de Agendamento</MudText>
+
+<MudPaper Class="pa-8 mt-4">
+    <EditForm Model="@InputModel" OnValidSubmit="OnValidSubmitAsync">
+        <DataAnnotationsValidator/>
+
+        <MudTextField Label="Observação"
+                      Variant="Variant.Outlined"
+                      @bind-Value="InputModel.Observacao"
+                      For="@(() => InputModel.Observacao)" />
+
+         <MudAutocomplete Label="Paciente"
+                         Variant="Variant.Outlined"
+                         T="Paciente"
+                         SearchFunc="@BuscarPaciente"
+                         ToStringFunc="@(e=> e==null ? null : $"{e.Nome}")"
+                         @bind-Value="InputModel.Paciente"
+                         For="@(() => InputModel.Paciente)" />
+
+        <MudAutocomplete Label="Medico"
+                         Variant="Variant.Outlined"
+                         T="Medico"                         
+                         SearchFunc="@BuscarMedico"
+                         ToStringFunc="@(e=> e==null ? null : $"{e.Nome} ({e.Crm})")" 
+                         @bind-Value="InputModel.Medico" 
+                         For="@(() => InputModel.Medico)"/> 
+
+         <MudDatePicker Label="Data do Agendamento"
+                       Editable="false"
+                       @bind-Date="InputModel.DataConsulta"
+                       Variant="Variant.Outlined"
+                       MinDate="DateTime.Today"
+                       Placeholder="Data do Agendamento" 
+                       For="@(() => InputModel.DataConsulta)" />
+
+        <MudTimePicker Label="Hora do Agendamento"
+                       Editable="false"
+                       @bind-Time="InputModel.HoraConsulta"
+                       Variant="Variant.Outlined"
+                       AmPm="false"
+                       Placeholder="Hora do Agendamento"
+                       For="@(() => InputModel.HoraConsulta)" />
+
+        <MudDivider Class="m-4" />
+
+        <MudButton Variant="Variant.Filled"
+                   StartIcon="@Icons.Material.Filled.Save"
+                   Color="Color.Info"
+                   Size="Size.Large"
+                   ButtonType="ButtonType.Submit">Salvar</MudButton>
+    </EditForm>
+
+    
+</MudPaper>
