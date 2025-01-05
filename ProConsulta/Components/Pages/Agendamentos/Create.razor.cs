@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
+using ProConsulta.Base;
 using ProConsulta.Data.Repositorios.Interfaces;
 using ProConsulta.Models;
 
 namespace ProConsulta.Components.Pages.Agendamentos
 {
-    public class CreateAgendamentoPage : ComponentBase
+    public class CreateAgendamentoPage : CustomComponentBase
     {
         [Inject]
         private IAgendamentoRepositorio AgendamentoRepositorio { get; set; } = null!;
@@ -16,12 +17,6 @@ namespace ProConsulta.Components.Pages.Agendamentos
        
         [Inject]
         private IPacienteRepositorio PacienteRepositorio { get; set; } = null!;
-        
-        [Inject]
-        private ISnackbar Snackbar { get; set; } = null!;
-        
-        [Inject]
-        private NavigationManager NavigationManager { get; set; } = null!;
 
         public AgendamentoInputModel InputModel { get; set; } = new AgendamentoInputModel();
 

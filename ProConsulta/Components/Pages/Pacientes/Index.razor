@@ -4,7 +4,7 @@
 <MudText Typo="Typo.h3">Paciente</MudText>
 
 <MudButton Variant="Variant.Filled"
-    StartIcon="@Icons.Material.Filled.Add"
+    StartIcon="@Icons.Material.Filled.Add" hidden="@Esconder"
     Color="Color.Info"
     Size="Size.Large"
     Href="/pacientes/create"
@@ -22,8 +22,8 @@
         <TemplateColumn>
             <CellTemplate>
                 <MudStack Row>                    
-                    <MudFab Size="Size.Small" Label="Editar" @onclick="@(() => GoToUpdate(context.Item.Id))" StartIcon="@Icons.Material.Filled.Edit" Color="Color.Success"/>
-                    <MudFab Size="Size.Small" Label="Excluir" @onclick="@(() => DeletePaciente(context.Item))" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error" />
+                    <MudFab Size="Size.Small" Label="Editar" hidden="@Esconder" @onclick="@(() => GoToUpdate(context.Item.Id))" StartIcon="@Icons.Material.Filled.Edit" Color="Color.Success"/>
+                    <MudFab Size="Size.Small" Label="Excluir" hidden="@Esconder" @onclick="@(() => DeletePaciente(context.Item))" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error" />
                 </MudStack>
             </CellTemplate>
         </TemplateColumn>

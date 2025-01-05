@@ -1,29 +1,20 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using MudBlazor;
+using ProConsulta.Base;
 using ProConsulta.Data.Repositorios.Interfaces;
 using ProConsulta.Extensions;
 using ProConsulta.Models;
 
 namespace ProConsulta.Components.Pages.Medicos
 {
-    public class CreateMedicoPage : ComponentBase
+    public class CreateMedicoPage : CustomComponentBase
     {
         [Inject]
         public IEspecialidadeRepositorio EspecialidadeRepositorio { get; set; }
 
         [Inject]
         public IMedicoRepositorio Repositorio { get; set; }
-
-        [Inject]
-        public IDialogService Dialog { get; set; } = null!;
-
-        [Inject]
-        public ISnackbar Snackbar { get; set; } = null!;
-
-        [Inject]
-        public NavigationManager NavigationManager { get; set; } = null!;
 
         public List<Especialidade> Especialidades { get; set; } = new();
         public MedicoInputModel InputModel { get; set; } = new();

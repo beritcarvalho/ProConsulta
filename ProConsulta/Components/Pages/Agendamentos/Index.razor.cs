@@ -1,28 +1,21 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using ProConsulta.Base;
 using ProConsulta.Data.Repositorios.Interfaces;
 using ProConsulta.Models;
 
 namespace ProConsulta.Components.Pages.Agendamentos
 {
-    public class IndexAgendamentoPage : ComponentBase
+    public class IndexAgendamentoPage : CustomComponentBase
     {
         [Inject]
         public IAgendamentoRepositorio Repositorio { get; set; } = null!;
-
-        [Inject]
-        public IDialogService Dialog { get; set; } = null!;
-
-        [Inject]
-        public ISnackbar Snackbar { get; set; } = null!;
-
-        [Inject]
-        public NavigationManager NavigationManager { get; set; } = null!;
 
         public List<Agendamento> Agendamentos { get; set; } = new();
 
         protected override async Task OnInitializedAsync()
         {
+            await ValidarExibicaoBotaoAsync();
             Agendamentos = await Repositorio.GetAll();
         }
 

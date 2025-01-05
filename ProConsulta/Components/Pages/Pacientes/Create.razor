@@ -1,5 +1,7 @@
 ﻿@page "/pacientes/create"
+@using Microsoft.AspNetCore.Authorization
 @inherits CreatePage
+@attribute [Authorize(Roles = "Atendente")]
 
 <MudText Typo="Typo.h3">Cadastro de Paciente</MudText>
 

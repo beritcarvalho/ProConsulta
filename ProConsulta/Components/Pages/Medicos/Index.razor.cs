@@ -1,28 +1,24 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using ProConsulta.Base;
 using ProConsulta.Data.Repositorios.Interfaces;
 using ProConsulta.Models;
 
 namespace ProConsulta.Components.Pages.Medicos
 {
-    public class IndexMedicoPage : ComponentBase
+    public class IndexMedicoPage : CustomComponentBase
     {
         [Inject]
         public IMedicoRepositorio Repositorio { get; set; } = null!;
 
         [Inject]
-        public IDialogService Dialog { get; set; } = null!;
-
-        [Inject]
-        public ISnackbar Snackbar { get; set; } = null!;
-
-        [Inject]
         public NavigationManager NavigationManager { get; set; } = null!;
-
-        public List<Medico> Medicos { get; set; } = new();
+        
+        public List<Medico> Medicos { get; set; } = new();        
 
         protected override async Task OnInitializedAsync()
         {
+            await ValidarExibicaoBotaoAsync();
             Medicos = await Repositorio.GetAll();
         }
 

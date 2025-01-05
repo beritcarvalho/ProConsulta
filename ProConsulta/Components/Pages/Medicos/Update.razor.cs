@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
-using ProConsulta.Components.Pages.Pacientes;
+using ProConsulta.Base;
 using ProConsulta.Data.Repositorios.Interfaces;
 using ProConsulta.Extensions;
 using ProConsulta.Models;
 
 namespace ProConsulta.Components.Pages.Medicos
 {
-    public class UpdateMedicoPage : ComponentBase
+    public class UpdateMedicoPage : CustomComponentBase
     {
         [Parameter]
         public int MedicoId { get; set; }
@@ -18,12 +18,6 @@ namespace ProConsulta.Components.Pages.Medicos
 
         [Inject]
         public IEspecialidadeRepositorio EspecialidadeRepositorio { get; set; } = null!;
-
-        [Inject]
-        public ISnackbar Snackbar { get; set; } = null!;
-
-        [Inject]
-        public NavigationManager NavigationManager { get; set; } = null!;
 
         public Medico? MedicoAtual { get; set; }
         public MedicoInputModel InputModel { get; set; } = new();

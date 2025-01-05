@@ -1,25 +1,17 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
+using ProConsulta.Base;
 using ProConsulta.Data.Repositorios.Interfaces;
 using ProConsulta.Extensions;
 using ProConsulta.Models;
 
 namespace ProConsulta.Components.Pages.Pacientes
 {
-    public class CreatePage : ComponentBase
+    public class CreatePage : CustomComponentBase
     {
         [Inject]
         public IPacienteRepositorio Repositorio { get; set; } = null!;
-
-        [Inject]
-        public IDialogService Dialog { get; set; } = null!;
-
-        [Inject]
-        public ISnackbar Snackbar { get; set; } = null!;
-
-        [Inject]
-        public NavigationManager NavigationManager { get; set; } = null!;
 
         public PacienteInputModel InputModel { get; set; } = new();
 
@@ -48,6 +40,5 @@ namespace ProConsulta.Components.Pages.Pacientes
                 Snackbar.Add(ex.Message, Severity.Error);
             }
         }
-
     }
 }

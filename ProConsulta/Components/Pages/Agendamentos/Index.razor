@@ -4,7 +4,7 @@
 <MudText Typo="Typo.h3">Agendamento</MudText>
 
 <MudButton Variant="Variant.Filled"
-           StartIcon="@Icons.Material.Filled.Add"
+           StartIcon="@Icons.Material.Filled.Add" hidden="@Esconder"
            Color="Color.Info"
            Size="Size.Large"
            Href="/agendamentos/create"
@@ -16,22 +16,23 @@
     @foreach (var agendamento in Agendamentos)
     {
         <MudPaper Class="pa-2 mt-1 border-dashed" Outlined="true">
-            
+
             <MudText Class="d-flex justify-center" Typo="Typo.h5">@agendamento.Id</MudText>
 
             <MudStack Row Class="mt-4">
                 <MudText>Dr. @agendamento.Medico.Nome</MudText>
-                <MudIcon Icon="@Icons.Material.Filled.Timer"/>
+                <MudIcon Icon="@Icons.Material.Filled.Timer" />
                 <MudText>@agendamento.Paciente.Nome</MudText>
             </MudStack>
 
             <MudText Class="mt-4" Typo="Typo.body2">@(agendamento?.Observacao ?? "")</MudText>
 
-            <MudDivider Class="mt-4 mb-4"/>
+            <MudDivider Class="mt-4 mb-4" />
 
             <MudStack Row Class="d-flex justify-space-between mt-4 mb-2">
                 <MudChip T="string" Color="Color.Primary">@agendamento.DataConsulta.ToString("dd/MM/yyyy") às @agendamento.HoraConsulta</MudChip>
                 <MudFab Size="Size.Small"
+                        hidden="@Esconder"
                         @onclick="@(() => DeleteAgendamento(agendamento))"
                         StartIcon="@Icons.Material.Filled.Delete"
                         Color="Color.Error" />
