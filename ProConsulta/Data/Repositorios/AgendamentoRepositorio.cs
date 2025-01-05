@@ -64,5 +64,25 @@ namespace ProConsulta.Data.Repositorios
                 throw;
             }
         }
+
+        public async Task<List<AgendamentoAnual>> GetReportAsync()
+        {
+            FormattableString query = @$"
+                SELECT
+                    MONTH(DataConsulta) AS Mes,
+                    COUNT(*) AS Quantidade
+                FROM
+                    Agendamentos
+                WHERE
+                    YEAR(DataConsulta) = {DateTime.Today.Year.ToString()}
+                GROUP BY
+                    MONTH(DataConsulta)
+                ORDER BY
+                    Mes";
+
+            var result = _context.Database.SqlQuery<AgendamentoAnual>(query);
+
+            return await result.ToListAsync();
+        }
     }
 }
